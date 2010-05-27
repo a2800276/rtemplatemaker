@@ -1,4 +1,6 @@
 //#include <Python.h>
+#include <ruby.h>
+
 #include <string.h>
 #define MARKER "\x1f"
 
@@ -188,8 +190,10 @@ static PyObject * function_marker(PyObject *self, PyObject *args) {
 //     {NULL, NULL, 0, NULL}        // sentinel
 // };
 
-/*
-PyMODINIT_FUNC init_templatemaker(void) {
-    (void) Py_InitModule("_templatemaker", ModuleMethods);
+
+VALUE mTemplateMaker;
+VALUE mTemplateMakerFFI;
+void Init_templatemaker(void) {
+  mTemplateMaker    = rb_define_module("Templatemaker");
+  mTemplateMakerFFI = rb_define_module_under(mTemplateMaker, "FFI"); 
 }
-*/
