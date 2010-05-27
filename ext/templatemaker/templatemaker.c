@@ -1,4 +1,5 @@
-#include <Python.h>
+//#include <Python.h>
+#include <string.h>
 #define MARKER "\x1f"
 
 /*
@@ -148,7 +149,7 @@ static PyObject * function_longest_match(PyObject *self, PyObject *args) {
     return Py_BuildValue("(iii)", best_size, a_offset, b_offset);
 }
 */
-
+/*
 static PyObject * function_make_template(PyObject *self, PyObject *args) {
     char* template;
     char* a;
@@ -170,20 +171,25 @@ static PyObject * function_make_template(PyObject *self, PyObject *args) {
     free(template);
     return result;
 }
+*/
 
+/*
 static PyObject * function_marker(PyObject *self, PyObject *args) {
     return PyString_FromStringAndSize(MARKER, sizeof(MARKER)-1);
 }
+*/
 
-static PyMethodDef ModuleMethods[] = {
-    // longest_match is commented out because it's not necessary to expose it
-    // at the Python level. To expose it, uncomment the following line.
-/*    {"longest_match", function_longest_match, METH_VARARGS, "Given two strings, determines the longest common substring and returns a tuple of (best_size, a_offset, b_offset)."},*/
-    {"make_template", function_make_template, METH_VARARGS, "Given two strings, returns a template."},
-    {"marker", function_marker, METH_VARARGS, "Returns a string of the template marker."},
-    {NULL, NULL, 0, NULL}        // sentinel
-};
+// static PyMethodDef ModuleMethods[] = {
+//     // longest_match is commented out because it's not necessary to expose it
+//     // at the Python level. To expose it, uncomment the following line.
+// /*    {"longest_match", function_longest_match, METH_VARARGS, "Given two strings, determines the longest common substring and returns a tuple of (best_size, a_offset, b_offset)."},*/
+//     {"make_template", function_make_template, METH_VARARGS, "Given two strings, returns a template."},
+//     {"marker", function_marker, METH_VARARGS, "Returns a string of the template marker."},
+//     {NULL, NULL, 0, NULL}        // sentinel
+// };
 
+/*
 PyMODINIT_FUNC init_templatemaker(void) {
     (void) Py_InitModule("_templatemaker", ModuleMethods);
 }
+*/
