@@ -184,6 +184,7 @@ static PyMethodDef ModuleMethods[] = {
     {NULL, NULL, 0, NULL}        // sentinel
 };
 
-PyMODINIT_FUNC init_templatemaker(void) {
-    (void) Py_InitModule("_templatemaker", ModuleMethods);
+//PyMODINIT_FUNC init_templatemaker(void) {
+PyMODINIT_FUNC init_template(void) {
+    (void) Py_InitModule("_template", ModuleMethods);
 }
