@@ -191,9 +191,39 @@ static PyObject * function_marker(PyObject *self, PyObject *args) {
 // };
 
 
+static VALUE fnc_tm_make_template(VALUE obj, VALUE brain, VALUE text, VALUE tolerance) {
+  VALUE result;
+  char *a, *b, *template;
+  int t, len, lena, lenb;
+  Check_Type(brain,     T_STRING); 
+  Check_Type(text,      T_STRING); 
+  Check_Type(tolerance, T_FIXNUM); 
+  
+  a = StringValuePtr(brain);
+  b = StringValuePtr(text);
+  t = FIX2INT(tolerance);
+  
+  lena = strlen(a);
+  lenb = strlen(b);
+  len = lena > lenb ? lena : lenb;
+  ++len;
+  
+  template = (char *) malloc(len * sizeof(char));
+  template[0] = '\0';
+
+  make_template(template, t, a, b, 0, lena, 0, lenb);
+
+  result = rb_str_new2(template);
+  free(template);
+  return result;
+
+}
+
 VALUE mTemplateMaker;
 VALUE mTemplateMakerFFI;
-void Init_templatemaker(void) {
+void Init_templatemaker_ffi(void) {
   mTemplateMaker    = rb_define_module("Templatemaker");
-  mTemplateMakerFFI = rb_define_module_under(mTemplateMaker, "FFI"); 
+  mTemplateMakerFFI = rb_define_module_under(mTemplateMaker, "FFI");
+  rb_define_const(mTemplateMaker, "MARKER", rb_str_new2(MARKER));
+  rb_define_singleton_method(mTemplateMakerFFI, "make_template", fnc_tm_make_template, 3); // or 3
 }

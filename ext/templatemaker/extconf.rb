@@ -1,2 +1,2 @@
 require 'mkmf'
-create_makefile "templatemaker"
+create_makefile "templatemaker_ffi"
