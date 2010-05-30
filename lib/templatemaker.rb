@@ -1,2 +1,2 @@
-require 'templatemaker/templatemaker_ffi'
+require 'templatemaker_ffi'
 require 'templatemaker/templatemaker'

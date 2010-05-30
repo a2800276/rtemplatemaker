@@ -1,3 +1,7 @@
+THIS IS THE ORIGINAL README OF THE PYTHON IMPLEMENTATION!!!
+please see README.RUBY for some ruby specific hints.
+
+
 =============
 templatemaker
 =============
