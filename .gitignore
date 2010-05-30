@@ -1,4 +1,6 @@
-*.swp
+example*
 *.o
+*.swp
 *.bundle
+*.so
 ext/templatemaker/Makefile
